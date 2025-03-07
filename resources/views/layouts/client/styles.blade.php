@@ -37,8 +37,6 @@
 		============================================ -->
         <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
         
-        <!-- Style customizer (Remove these two lines please) -->
-        <link rel="stylesheet" href="{{ asset('assets/css/style-customizer.css') }}">
-        <link href="#" data-style="styles" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/css/mystyles.css') }}">
 
 @stack('styles')

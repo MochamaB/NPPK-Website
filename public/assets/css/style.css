@@ -255,8 +255,8 @@ body {
     transition: all 0.3s ease 0s;
 }
 .header-area .header-search {
-  padding: 44px 0 43px;
-  transition: all 0.3s ease 0s;
+    padding: 2.1rem 0 2.2rem 1.5rem;
+    transition: all 0.3s ease 0s;
 }
 .header-button > a {
     background-color: #ea000d;
