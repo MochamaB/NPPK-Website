@@ -3,12 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Widget;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('pages.Clientpages.home');
+        // Get the home page hero slider widget
+        $slider = Widget::where('name', 'Home Page Hero Slider')
+                       ->where('is_active', true)
+                       ->first();
+
+        // Pass the entire widget object to the view
+        return view('pages.Clientpages.home', [
+            'slider' => $slider
+        ]);
     }
 
     public function about()
