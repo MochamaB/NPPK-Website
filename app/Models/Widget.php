@@ -45,6 +45,36 @@ class Widget extends Model
             ]);
         }
 
+        // For counter-stats widget specifically
+        if ($this->widgetType->component === 'components.widgets.counter-stats' && isset($this->data['stats'])) {
+            return view($this->widgetType->component, [
+                'title' => $this->data['title'] ?? null,
+                'description' => $this->data['description'] ?? null,
+                'stats' => $this->data['stats']
+            ]);
+        }
+
+        // For team-showcase widget specifically
+        if ($this->widgetType->component === 'components.widgets.team-showcase' && isset($this->data['members'])) {
+            return view($this->widgetType->component, [
+                'title' => $this->data['title'] ?? null,
+                'description' => $this->data['description'] ?? null,
+                'members' => $this->data['members']
+            ]);
+        }
+
+        // For magazine widget specifically
+        if ($this->widgetType->component === 'components.widgets.magazine') {
+            return view($this->widgetType->component, [
+                'data' => [
+                    'campaign_news' => $this->data['campaign_news'] ?? [],
+                    'campaign_news_link' => $this->data['campaign_news_link'] ?? '#',
+                    'magazine_articles' => $this->data['magazine_articles'] ?? [],
+                    'magazine_link' => $this->data['magazine_link'] ?? '#'
+                ]
+            ]);
+        }
+
         return view($this->widgetType->component, $this->data);
     }
 }

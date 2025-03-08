@@ -18,10 +18,25 @@ class HomeController extends Controller
                          ->where('is_active', true)
                          ->first();
 
+        $counterStats = Widget::where('name', 'Home Page Counter Stats')
+                            ->where('is_active', true)
+                            ->first();
+
+        $teamShowcase = Widget::where('name', 'Home Page Leadership Team')
+                             ->where('is_active', true)
+                             ->first();
+
+        $magazine = Widget::where('name', 'Home Page Magazine Section')
+                        ->where('is_active', true)
+                        ->first();
+
         // Pass the entire widget object to the view
         return view('pages.Clientpages.home', [
             'slider' => $slider,
-            'whatWeDo' => $whatWeDo
+            'whatWeDo' => $whatWeDo,
+            'counterStats' => $counterStats,
+            'teamShowcase' => $teamShowcase,
+            'magazine' => $magazine
         ]);
     }
 
