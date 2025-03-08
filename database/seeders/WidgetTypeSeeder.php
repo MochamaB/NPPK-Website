@@ -51,6 +51,48 @@ class WidgetTypeSeeder extends Seeder
                 'is_active' => true,
                 'created_at' => now(),
                 'updated_at' => now()
+            ],
+            [
+                'name' => 'what-we-do',
+                'component' => 'components.widgets.what-we-do',
+                'description' => 'Section for displaying key activities and features',
+                'schema' => json_encode([
+                    'properties' => [
+                        'title' => [
+                            'type' => 'string',
+                            'description' => 'Section title'
+                        ],
+                        'description' => [
+                            'type' => 'string',
+                            'description' => 'Section description'
+                        ],
+                        'items' => [
+                            'type' => 'array',
+                            'items' => [
+                                'type' => 'object',
+                                'properties' => [
+                                    'icon' => [
+                                        'type' => 'string',
+                                        'description' => 'Font awesome icon class'
+                                    ],
+                                    'title' => [
+                                        'type' => 'string',
+                                        'description' => 'Item title'
+                                    ],
+                                    'description' => [
+                                        'type' => 'string',
+                                        'description' => 'Item description'
+                                    ]
+                                ],
+                                'required' => ['title', 'description']
+                            ]
+                        ]
+                    ],
+                    'required' => ['title', 'items']
+                ]),
+                'is_active' => true,
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ]);
     }

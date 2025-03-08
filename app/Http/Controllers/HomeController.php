@@ -9,14 +9,19 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Get the home page hero slider widget
+        // Get the home page widgets
         $slider = Widget::where('name', 'Home Page Hero Slider')
                        ->where('is_active', true)
                        ->first();
 
+        $whatWeDo = Widget::where('name', 'Home Page What We Do')
+                         ->where('is_active', true)
+                         ->first();
+
         // Pass the entire widget object to the view
         return view('pages.Clientpages.home', [
-            'slider' => $slider
+            'slider' => $slider,
+            'whatWeDo' => $whatWeDo
         ]);
     }
 

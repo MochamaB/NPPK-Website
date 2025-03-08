@@ -7,4 +7,7 @@
         {!! $slider->render() !!}
     @endif
 
+    @if(isset($whatWeDo) && $whatWeDo)
+        {!! $whatWeDo->render() !!}
+    @endif
 @endsection

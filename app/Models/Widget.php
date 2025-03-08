@@ -31,9 +31,18 @@ class Widget extends Model
             return '';
         }
 
-         // For slider widget specifically
-         if ($this->widgetType->component === 'components.widgets.slider' && isset($this->data['slides'])) {
+        // For slider widget specifically
+        if ($this->widgetType->component === 'components.widgets.slider' && isset($this->data['slides'])) {
             return view($this->widgetType->component, ['slides' => $this->data['slides']]);
+        }
+
+        // For what-we-do widget specifically
+        if ($this->widgetType->component === 'components.widgets.what-we-do' && isset($this->data['items'])) {
+            return view($this->widgetType->component, [
+                'title' => $this->data['title'],
+                'description' => $this->data['description'] ?? null,
+                'items' => $this->data['items']
+            ]);
         }
 
         return view($this->widgetType->component, $this->data);
