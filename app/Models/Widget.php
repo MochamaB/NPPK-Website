@@ -24,6 +24,14 @@ class Widget extends Model
         return $this->belongsTo(WidgetType::class);
     }
 
+    // Add relationship with pages
+    public function pages()
+    {
+        return $this->belongsToMany(Page::class, 'page_widget')
+                    ->withPivot('section', 'order')
+                    ->withTimestamps();
+    }
+
     // Helper method to render the widget
     public function render()
     {

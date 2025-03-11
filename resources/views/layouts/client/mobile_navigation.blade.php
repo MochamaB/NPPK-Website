@@ -1,11 +1,11 @@
-<nav>
+<nav id="dropdown">
     <ul>
         @if(isset($mainMenu) && $mainMenu)
             @foreach($mainMenu->topLevelItems as $item)
                 @if($item->children->count() > 0)
                     <li>
                         <a href="{{ $item->getFullUrl() }}">{{ $item->title }}</a>
-                        <ul class="submenu-mainmenu">
+                        <ul class="sub-menu">
                             @foreach($item->children as $child)
                                 <li><a href="{{ $child->getFullUrl() }}">{{ $child->title }}</a></li>
                             @endforeach
@@ -20,7 +20,7 @@
             <li><a href="{{ route('home') }}">Home</a></li>
             <li>
                 <a href="#">Menu 1</a>
-                <ul class="submenu-mainmenu">
+                <ul class="sub-menu">
                     <li><a href="#">Sub Menu 1 </a></li>
                     <li><a href="#">Sub Menu 2</a></li>
                 </ul>
@@ -33,5 +33,3 @@
         @endif
     </ul>
 </nav>
-
-<!-- main-menu-area end -->

@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use Database\Seeders\WidgetSeeder;
 use Database\Seeders\WidgetTypeSeeder;
+use Database\Seeders\PageWidgetSeeder;
+use Database\Seeders\MenuSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +26,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             WidgetTypeSeeder::class,
             WidgetSeeder::class,
+            PageWidgetSeeder::class,
+            MenuSeeder::class,
         ]);
     }
 }

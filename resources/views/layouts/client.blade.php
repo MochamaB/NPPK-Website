@@ -5,8 +5,9 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title> NPPK || Home Version One</title>
-        <meta name="description" content="">
+        <title>@yield('title', 'NPPK - National Progressive Party of Kenya')</title>
+        <meta name="description" content="@yield('meta_description', 'The official website of the National Progressive Party of Kenya')">
+        <meta name="keywords" content="@yield('meta_keywords', 'NPPK, Kenya, political party, progressive')">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- favicon
@@ -25,15 +26,17 @@
         <![endif]-->
         <!-- Add your site or application content here -->
         <div class="wrapper">
-            <!-- Header -->
+            <!-- Header and Navigation -->
             @include('layouts.client.header')
-            <!-- mobile-menu-area end -->
+            
             <div class="header-space"></div> 
 
-           <!-- Main Content -->
-    @yield('content')
-           <!-- Footer -->
-    @include('layouts.client.footer')
+            <!-- Main Content -->
+            @yield('content')
+           
+            <!-- Footer -->
+            @include('layouts.client.footer')
+            
             <!-- start scrollUp
             ============================================ -->
             <div id="toTop">

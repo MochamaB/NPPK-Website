@@ -2,21 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/services', [HomeController::class, 'services'])->name('services');
-Route::get('/team', [HomeController::class, 'team'])->name('team');
-Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/testimonials', [HomeController::class, 'testimonials'])->name('testimonials');
-Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
-Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
-Route::get('/cookies', [HomeController::class, 'cookies'])->name('cookies');
-Route::get('/help', [HomeController::class, 'help'])->name('help');
-Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+// Dynamic page routes - these will be handled by our new PageController
+Route::get('/', [PageController::class, 'show'])->name('home');
+Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.show');
+
+// Map common URLs to the page controller
+Route::get('/about-party', [PageController::class, 'show'])->name('about')->defaults('slug', 'about-party');
+Route::get('/vision-and-mission', [PageController::class, 'show'])->name('vision')->defaults('slug', 'vision-and-mission');
+Route::get('/party-history', [PageController::class, 'show'])->name('history')->defaults('slug', 'party-history');
+Route::get('/leadership', [PageController::class, 'show'])->name('leadership')->defaults('slug', 'leadership');
+Route::get('/news', [PageController::class, 'show'])->name('news')->defaults('slug', 'news');
+Route::get('/resources', [PageController::class, 'show'])->name('resources')->defaults('slug', 'resources');
+Route::get('/shop', [PageController::class, 'show'])->name('shop')->defaults('slug', 'shop');
+Route::get('/contact-us', [PageController::class, 'show'])->name('contact')->defaults('slug', 'contact-us');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

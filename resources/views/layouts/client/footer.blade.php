@@ -5,7 +5,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="social-logo">
                                     <a href="index.html">
-                                        <img src="img/logo/logo2.png" alt="">
+                                        <img src="{{ asset('assets/images/logo/logo2.png') }}" alt=""  style="width: 260px; height: auto;">
                                     </a>
                                 </div>
                             </div>
