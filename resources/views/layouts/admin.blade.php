@@ -36,6 +36,17 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
+                    @if(isset($breadcrumb))
+                        {{ $breadcrumb }}
+                    @else
+                        @php
+                            $breadcrumbData = App\Services\BreadcrumbService::generate();
+                        @endphp
+                        @include('layouts.admin.breadcrumb', [
+                            'title' => $title ?? $breadcrumbData['title'],
+                            'items' => $breadcrumbItems ?? $breadcrumbData['items']
+                        ])
+                    @endif
                     @yield('content')
                 </div>
                 <!-- container-fluid -->
