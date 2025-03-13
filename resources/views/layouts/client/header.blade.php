@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="logo floatleft">
                     <a href="{{ route('home') }}">
-                        <img alt="NPPK Logo" src="{{ asset('assets/images/logo/logo.png') }}" style="width: 250px; height: auto;">
+                        <img alt="NPPK Logo" src="{{ asset('client/assets/images/logo/logo.png') }}" style="width: 250px; height: auto;">
                     </a>
                 </div>
                 <div class="header-search floatright">

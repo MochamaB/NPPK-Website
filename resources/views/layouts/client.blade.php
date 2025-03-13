@@ -12,13 +12,13 @@
 
 		<!-- favicon
 		============================================ -->		
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('client/assets/img/favicon.ico') }}">
 	   
 		<!-- Styles -->
         @include('layouts.client.styles')
 		<!-- modernizr JS
 		============================================ -->		
-        <script src="{{ asset('assets/js/vendor/modernizr-3.11.7.min.js') }}"></script>
+        <script src="{{ asset('client/assets/js/vendor/modernizr-3.11.7.min.js') }}"></script>
     </head>
     <body>
         <!--[if lt IE 8]>

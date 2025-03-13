@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Middleware\AdminMiddleware;
 
-// Dynamic page routes - these will be handled by our new PageController
+// Client Routes
+// Dynamic page routes - these will be handled by our PageController
 Route::get('/', [PageController::class, 'show'])->name('home');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.show');
 
@@ -18,16 +20,23 @@ Route::get('/resources', [PageController::class, 'show'])->name('resources')->de
 Route::get('/shop', [PageController::class, 'show'])->name('shop')->defaults('slug', 'shop');
 Route::get('/contact-us', [PageController::class, 'show'])->name('contact')->defaults('slug', 'contact-us');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::middleware(['auth'])->group(function () {
-    Route::redirect('settings', 'settings/profile');
-
-    Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
-    Volt::route('settings/password', 'settings.password')->name('settings.password');
-    Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+// Admin Routes
+Route::prefix('admin')->group(function () {
+    // Guest routes
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login');
+        Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
+    });
+    
+    // Authenticated routes
+    Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('admin.dashboard');
+        
+        Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+    });
 });
 
-require __DIR__.'/auth.php';
+// Include API authentication routes (excluding the ones we've defined above)
+// require __DIR__.'/auth.php';

@@ -3,23 +3,23 @@
         
 		<!-- jquery
 		============================================ -->		
-        <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
+        <script src="{{ asset('client/assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
 		<!-- bootstrap JS
 		============================================ -->		
-        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('client/assets/js/bootstrap.min.js') }}"></script>
         <!-- ajax mails JS
         ============================================ -->
-        <script src="{{ asset('assets/js/ajax-mail.js') }}"></script>
+        <script src="{{ asset('client/assets/js/ajax-mail.js') }}"></script>
 		<!-- wow JS
 		============================================ -->		
-        <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+        <script src="{{ asset('client/assets/js/wow.min.js') }}"></script>
 		<!-- Nivo slider js
 		============================================ --> 		
-		<script src="{{ asset('assets/lib/js/jquery.nivo.slider.js') }}"></script>
-		<script src="{{ asset('assets/lib/home.js') }}"></script>
+		<script src="{{ asset('client/assets/lib/js/jquery.nivo.slider.js') }}"></script>
+		<script src="{{ asset('client/assets/lib/home.js') }}"></script>
 		<!-- plugins JS
 		============================================ -->
-        <script src="{{ asset('assets/js/plugins.js') }}"></script>
+        <script src="{{ asset('client/assets/js/plugins.js') }}"></script>
         <!-- google map api
 		============================================ -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_qDiT4MyM7IxaGPbQyLnMjVUsJck02N0"></script>
@@ -64,6 +64,6 @@
         </script>
 		<!-- main JS
 		============================================ -->		
-        <script src="{{ asset('assets/js/main.js') }}"></script>
-        <script src="{{ asset('assets/js/myscripts.js') }}"></script>
+        <script src="{{ asset('client/assets/js/main.js') }}"></script>
+        <script src="{{ asset('client/assets/js/myscripts.js') }}"></script>
 @stack('scripts')
