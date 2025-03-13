@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\MenuItemController;
 
 // Client Routes
 // Dynamic page routes - these will be handled by our PageController
@@ -64,6 +66,15 @@ Route::prefix('admin')->group(function () {
     // Authenticated routes
     Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+        
+        // Menu Management Routes
+        Route::resource('menus', \App\Http\Controllers\Admin\MenuController::class, ['as' => 'admin']);
+        Route::get('menus/{menu}/items', [\App\Http\Controllers\Admin\MenuController::class, 'items'])->name('admin.menus.items');
+        Route::post('menus/{menu}/items', [\App\Http\Controllers\Admin\MenuItemController::class, 'store'])->name('admin.menu-items.store');
+        Route::get('menus/{menu}/items/{menuItem}/edit', [\App\Http\Controllers\Admin\MenuItemController::class, 'edit'])->name('admin.menu-items.edit');
+        Route::put('menus/{menu}/items/{menuItem}', [\App\Http\Controllers\Admin\MenuItemController::class, 'update'])->name('admin.menu-items.update');
+        Route::delete('menus/{menu}/items/{menuItem}', [\App\Http\Controllers\Admin\MenuItemController::class, 'destroy'])->name('admin.menu-items.destroy');
+        Route::post('menus/{menu}/items/order', [\App\Http\Controllers\Admin\MenuItemController::class, 'updateOrder'])->name('admin.menu-items.order');
         
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
     });

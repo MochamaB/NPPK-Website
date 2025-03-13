@@ -62,10 +62,10 @@
                     <div class="collapse menu-dropdown" id="sidebarMenus">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-all-menus">All Menus</a>
+                                <a href="{{ route('admin.menus.index') }}" class="nav-link" data-key="t-all-menus">All Menus</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-menu-items">Menu Items</a>
+                                <a href="{{ route('admin.menus.create') }}" class="nav-link" data-key="t-add-menu">Add Menu</a>
                             </li>
                         </ul>
                     </div>

@@ -15,6 +15,9 @@
     <link href="{{ asset('admin/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css" />
+    
     <!-- Additional CSS -->
     @stack('styles')
 </head>
@@ -60,6 +63,8 @@
     <!-- END layout-wrapper -->
 
     <!-- JAVASCRIPT -->
+     
+    <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/node-waves/waves.min.js') }}"></script>

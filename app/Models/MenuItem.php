@@ -99,4 +99,21 @@ class MenuItem extends Model
         
         return false;
     }
+
+    /**
+     * Get all descendants of this menu item
+     * 
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function descendants()
+    {
+        $descendants = collect();
+        
+        foreach ($this->children as $child) {
+            $descendants->push($child);
+            $descendants = $descendants->merge($child->descendants());
+        }
+        
+        return $descendants;
+    }
 }
