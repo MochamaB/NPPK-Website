@@ -46,7 +46,7 @@
                         <div class="text-center mt-sm-5 mb-4 text-white-50">
                             <div>
                                 <a href="{{ route('home') }}" class="d-inline-block auth-logo">
-                                    <img src="{{ asset('admin/assets/images/logo-light.png') }}" alt="" height="20">
+                                    <img src="{{ asset('admin/assets/images/logo-light2.png') }}" alt=""style="width: 250px; height: auto;">
                                 </a>
                             </div>
                             <p class="mt-3 fs-15 fw-medium">NPPK Admin Dashboard</p>

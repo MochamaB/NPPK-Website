@@ -1,1 +1,3 @@
-(document.querySelectorAll("[toast-list]")||document.querySelectorAll("[data-choices]")||document.querySelectorAll("[data-provider]"))&&(document.writeln("<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/toastify-js'><\/script>"),document.writeln("<script type='text/javascript' src='assets/libs/choices.js/public/assets/scripts/choices.min.js'><\/script>"),document.writeln("<script type='text/javascript' src='assets/libs/flatpickr/flatpickr.min.js'><\/script>"));
+// This file now serves as a placeholder since the libraries are properly loaded in the layout
+// The original code used document.writeln which caused browser warnings
+// Libraries are now properly included in the admin.blade.php layout file

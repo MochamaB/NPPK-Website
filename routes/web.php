@@ -70,6 +70,7 @@ Route::prefix('admin')->group(function () {
         // Menu Management Routes
         Route::resource('menus', \App\Http\Controllers\Admin\MenuController::class, ['as' => 'admin']);
         Route::get('menus/{menu}/items', [\App\Http\Controllers\Admin\MenuController::class, 'items'])->name('admin.menus.items');
+        Route::get('menus/{menu}/items/create', [\App\Http\Controllers\Admin\MenuItemController::class, 'create'])->name('admin.menu-items.create');
         Route::post('menus/{menu}/items', [\App\Http\Controllers\Admin\MenuItemController::class, 'store'])->name('admin.menu-items.store');
         Route::get('menus/{menu}/items/{menuItem}/edit', [\App\Http\Controllers\Admin\MenuItemController::class, 'edit'])->name('admin.menu-items.edit');
         Route::put('menus/{menu}/items/{menuItem}', [\App\Http\Controllers\Admin\MenuItemController::class, 'update'])->name('admin.menu-items.update');

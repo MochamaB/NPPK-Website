@@ -12,6 +12,23 @@ use Illuminate\Support\Facades\Validator;
 class MenuItemController extends Controller
 {
     /**
+     * Show the form for creating a new menu item
+     *
+     * @param  \App\Models\Menu  $menu
+     * @return \Illuminate\View\View
+     */
+    public function create(Menu $menu)
+    {
+        // Get all pages for selection
+        $pages = Page::all();
+        
+        // Get all menu items from this menu for parent selection
+        $parentItems = $menu->menuItems()->get();
+        
+        return view('admin.menus.item-create', compact('menu', 'pages', 'parentItems'));
+    }
+
+    /**
      * Store a newly created menu item
      *
      * @param  \Illuminate\Http\Request  $request

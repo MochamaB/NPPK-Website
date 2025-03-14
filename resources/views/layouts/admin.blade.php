@@ -18,6 +18,12 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css" />
     
+    <!-- Toastify CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Flatpickr CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet" type="text/css" />
+    
     <!-- Additional CSS -->
     @stack('styles')
 </head>
@@ -70,8 +76,41 @@
     <script src="{{ asset('admin/assets/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
+    
+    <!-- Properly include libraries that were previously loaded with document.write -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/dist/toastify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js@10.0.2/public/assets/scripts/choices.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    
+    <!-- Modified plugins.js will be loaded after these libraries -->
     <script src="{{ asset('admin/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
+    
+    <!-- Sidebar dropdown functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add active class to parent when child is active
+            var currentUrl = window.location.href;
+            var menuLinks = document.querySelectorAll('.menu-dropdown .nav-link');
+            
+            menuLinks.forEach(function(link) {
+                if (link.getAttribute('href') !== '#' && currentUrl.includes(link.getAttribute('href'))) {
+                    // Add active class to the link
+                    link.classList.add('active');
+                    
+                    // Find parent dropdown and expand it
+                    var parentDropdown = link.closest('.menu-dropdown');
+                    if (parentDropdown) {
+                        parentDropdown.classList.add('show');
+                        var parentToggle = document.querySelector('[data-bs-toggle="collapse"][href="#' + parentDropdown.id + '"]');
+                        if (parentToggle) {
+                            parentToggle.setAttribute('aria-expanded', 'true');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
     
     <!-- Additional Scripts -->
     @stack('scripts')

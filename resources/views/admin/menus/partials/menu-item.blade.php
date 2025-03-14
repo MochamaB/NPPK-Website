@@ -2,6 +2,15 @@
     <li class="dd-item" data-id="{{ $menuItem->id }}">
         <div class="dd-handle">
             <div class="menu-item-title">
+                @if($menuItem->children && $menuItem->children->count() > 0)
+                    <span class="menu-item-has-children">
+                        <i class="fas fa-folder"></i>
+                    </span>
+                @else
+                    <span class="menu-item-no-children">
+                        <i class="fas fa-bars"></i>
+                    </span>
+                @endif
                 {{ $menuItem->title }}
                 @if($menuItem->page_id)
                     <span class="badge bg-soft-info text-info menu-item-badge">
@@ -21,21 +30,21 @@
                     <span class="badge bg-soft-danger text-danger menu-item-badge">Inactive</span>
                 @endif
             </div>
-            <div class="menu-item-actions">
-                <a href="{{ route('admin.menu-items.edit', ['menu' => $menu->id, 'menuItem' => $menuItem->id]) }}" class="btn btn-sm btn-soft-primary">
-                    <i class="fas fa-edit"></i>
-                </a>
-                <button type="button" class="btn btn-sm btn-soft-danger delete-menu-item" data-id="{{ $menuItem->id }}" data-title="{{ $menuItem->title }}">
-                    <i class="fas fa-trash"></i>
-                </button>
-                <form id="delete-menu-item-{{ $menuItem->id }}" action="{{ route('admin.menu-items.destroy', ['menu' => $menu->id, 'menuItem' => $menuItem->id]) }}" method="POST" style="display: none;">
-                    @csrf
-                    @method('DELETE')
-                </form>
-            </div>
+        </div>
+        <div class="menu-item-actions">
+            <a href="{{ route('admin.menu-items.edit', ['menu' => $menu->id, 'menuItem' => $menuItem->id]) }}" class="btn btn-sm btn-soft-primary">
+                <i class="fas fa-edit"></i>
+            </a>
+            <button type="button" class="btn btn-sm btn-soft-danger delete-menu-item" data-id="{{ $menuItem->id }}" data-title="{{ $menuItem->title }}">
+                <i class="fas fa-trash"></i>
+            </button>
+            <form id="delete-menu-item-{{ $menuItem->id }}" action="{{ route('admin.menu-items.destroy', ['menu' => $menu->id, 'menuItem' => $menuItem->id]) }}" method="POST" style="display: none;">
+                @csrf
+                @method('DELETE')
+            </form>
         </div>
         @if($menuItem->children && $menuItem->children->count() > 0)
-            <ol class="dd-list">
+            <ol class="dd-list child-menu-list">
                 @include('admin.menus.partials.menu-item', ['menuItems' => $menuItem->children, 'menu' => $menu])
             </ol>
         @endif

@@ -7,7 +7,7 @@
             <div class="card-header d-flex align-items-center">
                 <h4 class="card-title mb-0 flex-grow-1">Menus</h4>
                 <div class="flex-shrink-0">
-                    <a href="{{ route('admin.menus.create') }}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('admin.menus.create') }}" class="btn btn-primary">
                         <i class="ri-add-line align-bottom"></i> Add Menu
                     </a>
                 </div>

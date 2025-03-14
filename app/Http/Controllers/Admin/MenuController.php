@@ -52,14 +52,14 @@ class MenuController extends Controller
                 ->withInput();
         }
 
-        Menu::create([
+        $menu = Menu::create([
             'name' => $request->name,
             'location' => $request->location,
             'is_active' => $request->has('is_active'),
         ]);
 
-        return redirect()->route('admin.menus.index')
-            ->with('success', 'Menu created successfully');
+        return redirect()->route('admin.menu-items.create', ['menu' => $menu->id])
+            ->with('success', 'Menu created successfully. Now you can add menu items.');
     }
 
     /**

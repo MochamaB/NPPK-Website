@@ -13,7 +13,7 @@
             <div class="card-header d-flex align-items-center">
                 <h4 class="card-title mb-0 flex-grow-1">Manage "{{ $menu->name }}" Menu Items</h4>
                 <div class="flex-shrink-0">
-                    <a href="{{ route('admin.menus.index') }}" class="btn btn-soft-secondary btn-sm">
+                    <a href="{{ route('admin.menus.index') }}" class="btn btn-soft-secondary">
                         <i class="ri-arrow-left-line align-bottom"></i> Back to Menus
                     </a>
                 </div>
@@ -41,13 +41,13 @@
                                 <h5 class="card-title mb-0">Menu Structure</h5>
                                 <div class="mt-2">
                                     <button type="button" class="btn btn-soft-primary me-1" id="expand-all">
-                                        <i class="fas fa-plus align-bottom"></i> Expand All
+                                        <i class="fas fa-plus align-middle me-1"></i> Expand All
                                     </button>
                                     <button type="button" class="btn btn-soft-primary me-1" id="collapse-all">
-                                        <i class="fas fa-minus align-bottom"></i> Collapse All
+                                        <i class="fas fa-minus align-middle me-1"></i> Collapse All
                                     </button>
                                     <button type="button" class="btn btn-primary" id="save-menu-order" data-menu-id="{{ $menu->id }}">
-                                        <i class="fas fa-save align-bottom me-1"></i> Save Order
+                                        <i class="fas fa-save align-middle me-1"></i> Save Order
                                     </button>
                                 </div>
                             </div>
