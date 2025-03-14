@@ -22,7 +22,10 @@
     <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet" type="text/css" />
     
     <!-- Flatpickr CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+    
+    <!-- Choices.js CSS -->
+    <link href="{{ asset('admin/assets/libs/choices.js/choices.min.css') }}" rel="stylesheet" type="text/css" />
     
     <!-- Additional CSS -->
     @stack('styles')
@@ -45,17 +48,18 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
-                    @if(isset($breadcrumb))
-                        {{ $breadcrumb }}
-                    @else
-                        @php
-                            $breadcrumbData = App\Services\BreadcrumbService::generate();
-                        @endphp
-                        @include('layouts.admin.breadcrumb', [
-                            'title' => $title ?? $breadcrumbData['title'],
-                            'items' => $breadcrumbItems ?? $breadcrumbData['items']
-                        ])
-                    @endif
+                    @php
+                        $breadcrumbService = app(\App\Services\BreadcrumbService::class);
+                        $breadcrumbData = $breadcrumbService->generate();
+                    @endphp
+                    
+                    @include('layouts.admin.breadcrumb', [
+                        'title' => $breadcrumbData['title'],
+                        'items' => $breadcrumbData['items']
+                    ])
+                    
+                    @include('layouts.admin.alerts')
+                    
                     @yield('content')
                 </div>
                 <!-- container-fluid -->
@@ -67,20 +71,18 @@
         <!-- end main content-->
     </div>
     <!-- END layout-wrapper -->
-
+    
     <!-- JAVASCRIPT -->
-     
-    <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
     
-    <!-- Properly include libraries that were previously loaded with document.write -->
+    <!-- Include libraries before plugins.js -->
+    <script src="{{ asset('admin/assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/libs/choices.js/choices.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.12.0/dist/toastify.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/choices.js@10.0.2/public/assets/scripts/choices.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
     
     <!-- Modified plugins.js will be loaded after these libraries -->
     <script src="{{ asset('admin/assets/js/plugins.js') }}"></script>

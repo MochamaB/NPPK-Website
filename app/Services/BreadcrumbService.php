@@ -19,14 +19,6 @@ class BreadcrumbService
         $items = [];
         $routeName = '';
         
-        // Add Dashboard as the first item
-        if ($currentRouteName !== 'admin.dashboard') {
-            $items[] = [
-                'label' => 'Dashboard',
-                'route' => 'admin.dashboard'
-            ];
-        }
-        
         // Build breadcrumb items based on route segments
         foreach ($currentRouteSegments as $index => $segment) {
             // Skip 'admin' segment in breadcrumb display

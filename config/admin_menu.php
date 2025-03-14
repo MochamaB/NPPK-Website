@@ -31,12 +31,12 @@ return [
                     'children' => [
                         [
                             'title' => 'All Pages',
-                            'route' => null, // Replace with actual route when available
+                            'route' => 'admin.pages.index',
                             'permission' => 'manage_pages',
                         ],
                         [
                             'title' => 'Add Page',
-                            'route' => null, // Replace with actual route when available
+                            'route' => 'admin.pages.create',
                             'permission' => 'create_pages',
                         ],
                     ],
